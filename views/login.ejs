@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign in — Demo App</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main class="card">
+    <h1>Sign in</h1>
+    <% if (error) { %>
+      <p class="error"><%= error %></p>
+    <% } %>
+    <form method="POST" action="/login">
+      <label>
+        Username
+        <input type="text" name="username" autocomplete="username" required />
+      </label>
+      <label>
+        Password
+        <input type="password" name="password" autocomplete="current-password" required />
+      </label>
+      <button type="submit">Log in</button>
+    </form>
+    <p class="hint">Try: <code>alice</code> / <code>password1</code></p>
+  </main>
+</body>
+</html>

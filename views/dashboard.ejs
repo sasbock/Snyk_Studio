@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard — Demo App</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <span>Signed in as <strong><%= user.username %></strong> (<%= user.role %>)</span>
+    <a href="/logout">Log out</a>
+  </header>
+
+  <main class="container">
+    <h1>Your notes</h1>
+
+    <form method="GET" action="/search" class="search">
+      <input type="text" name="q" value="<%= q %>" placeholder="Search notes by title..." />
+      <button type="submit">Search</button>
+    </form>
+
+    <% if (typeof error !== 'undefined' && error) { %>
+      <p class="error"><%= error %></p>
+    <% } %>
+
+    <% if (notes.length === 0) { %>
+      <p class="hint">No notes to show. Use the search box above.</p>
+    <% } else { %>
+      <ul class="notes">
+        <% notes.forEach(function (n) { %>
+          <li>
+            <h3><%= n.title %></h3>
+            <p><%= n.body %></p>
+            <small>owner: <%= n.owner %></small>
+          </li>
+        <% }); %>
+      </ul>
+    <% } %>
+  </main>
+</body>
+</html>
